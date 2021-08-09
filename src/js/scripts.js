@@ -79,7 +79,7 @@ filtersElem.addEventListener( 'click', function( event ) {
 });
 
 // change is-checked class on buttons
-var buttonGroups = document.querySelectorAll('.button-group');
+var buttonGroups = document.querySelectorAll('.btn-group');
 for ( var i=0, len = buttonGroups.length; i < len; i++ ) {
   var buttonGroup = buttonGroups[i];
   radioButtonGroup( buttonGroup );
@@ -91,7 +91,23 @@ function radioButtonGroup( buttonGroup ) {
     if ( !matchesSelector( event.target, 'button' ) ) {
       return;
     }
-    buttonGroup.querySelector('.is-checked').classList.remove('is-checked');
-    event.target.classList.add('is-checked');
+    buttonGroup.querySelector('.active').classList.remove('active');
+    event.target.classList.add('active');
   });
 }
+
+// Isotope Filtering with select
+var $filtersSelect = $('.filters-select');
+
+// init Isotope
+var $grid = $('.grid').isotope({
+  itemSelector: '.element-item',
+  layoutMode: 'fitRows',
+  filter: $filtersSelect.val(),
+});
+
+// bind filter on select change
+$filtersSelect.on( 'change', function() {
+  // get filter value from option value
+  $grid.isotope({ filter: this.value });
+});

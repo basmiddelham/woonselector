@@ -23,18 +23,25 @@ get_header();
 						?>
 					</header><!-- .page-header -->
 
-
-
-					<div class="button-group filters-button-group">
-						<button class="button is-checked" data-filter="*">show all</button>
-						<button class="button" data-filter=".home_status-beschikbaar">Beschikbaar</button>
-						<button class="button" data-filter=".transition">transition</button>
-						<button class="button" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</button>
-						<button class="button" data-filter=":not(.transition)">not transition</button>
-						<button class="button" data-filter=".metal:not(.transition)">metal but not transition</button>
-						<button class="button" data-filter="numberGreaterThan50">number > 50</button>
-						<button class="button" data-filter="ium">name ends with &ndash;ium</button>
+					<div class="btn-group filters-button-group">
+						<button class="btn btn-primary btn-sm active" data-filter="*">show all</button>
+						<button class="btn btn-primary btn-sm" data-filter=".home_status-beschikbaar">Beschikbaar</button>
+						<button class="btn btn-primary btn-sm" data-filter=".transition">transition</button>
+						<button class="btn btn-primary btn-sm" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</button>
+						<button class="btn btn-primary btn-sm" data-filter=":not(.transition)">not transition</button>
+						<button class="btn btn-primary btn-sm" data-filter=".metal:not(.transition)">metal but not transition</button>
+						<button class="btn btn-primary btn-sm" data-filter="numberGreaterThan50">number > 50</button>
+						<button class="btn btn-primary btn-sm" data-filter="ium">name ends with &ndash;ium</button>
 					</div>
+
+					<select class="filters-select form-select form-select-sm mb-2 w-10">
+						<option value="*">show all</option>
+						<option value=".home_status-beschikbaar">beschikbaar</option>
+						<option value=".home_status-later-in-verhuur">later-in-verhuur</option>
+						<option value=".home_status-onder-optie">onder-optie</option>
+						<option value=".home_status-verhuurd">verhuurd</option>
+						<option value=".home_status-verhuurd-onder-voorbehoud">verhuurd-onder-voorbehoud</option>
+					</select>
 
 					<?php
 					/* Start the Loop */

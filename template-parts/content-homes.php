@@ -7,10 +7,25 @@
  * @package strt
  */
 
+ // Home Attributes
+$home_atts = [];
+if (get_field('phase')) {
+	$phase = get_field('phase');
+	array_push($home_atts, $phase);
+}
+if (get_field('aantal_kamers')) {
+	$aantal_kamers = 'kamers-' . get_field('aantal_kamers');
+	array_push($home_atts, $aantal_kamers);
+}
+
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('col-sm-6 col-lg-4 mb-4 element-item'); ?>>
+<article id="post-<?php the_ID(); ?>" class="col-sm-6 col-lg-4 mb-4 element-item <?php echo implode(' ', $home_atts); ?>">
 	<div class="card h-100 w-100">
+		<?php 
+			var_dump($home_atts);
+			echo implode(' ', $home_atts);
+		?>
 		<header class="card-header">
 			<?php the_title( '<h2 class="card-title mb-0">', '</h2>' ); ?>
 		</header><!-- .entry-header -->
@@ -24,6 +39,7 @@
 			echo 'Aantal kamers: ' . get_field('aantal_kamers') . '<br>';
 			echo 'Aantal slaapkamers: ' . get_field('slaapkamers') . '<br>';
 			echo 'Woningtype: ' . get_field('woning_type') . '<br>';
+			echo 'Huurtype: ' . get_field('phase') . '<br>';
 			?>
 		</div>
 		<footer class="card-footer">
