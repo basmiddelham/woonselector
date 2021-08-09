@@ -1,0 +1,33 @@
+// Sticky footer
+html,
+body {
+    height: 100%
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    > .site {
+        flex: 1 0 auto;
+    }
+
+    > header,
+    > footer {
+        flex-shrink: 0;
+    }
+}
+
+// Layout
+body {
+    // Margins
+    &:not(.page-template-page-flexbuilder) {
+        > header {
+            margin-bottom: $grid-gutter-width * 2;
+        }
+
+        > footer {
+            margin-top: $grid-gutter-width * 2;
+        }
+    }
+}

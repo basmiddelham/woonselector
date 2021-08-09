@@ -1,0 +1,272 @@
+@import "../../node_modules/bootstrap/scss/functions";
+
+// Colors
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$blue:    #0d6efd !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #d63384 !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #198754 !default;
+$teal:    #20c997 !default;
+$cyan:    #0dcaf0 !default;
+
+$primary:   #e70e56 !default;
+$secondary: #0d386d !default;
+$success:   $green !default;
+$info:      $cyan !default;
+$warning:   $yellow !default;
+$danger:    $red !default;
+$light:     $gray-100 !default;
+$dark:      $gray-900 !default;
+
+// Options
+$enable-rounded:              false !default;
+$enable-shadows:              true !default;
+
+// Spacing
+$spacer: 2rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+) !default;
+
+// Body
+$body-bg:                   $white !default;
+$body-color:                $gray-900 !default;
+$body-text-align:           null !default;
+
+// Links
+$link-color:                $primary !default;
+$link-decoration:           underline !default;
+$link-shade-percentage:     20% !default;
+$link-hover-color:          shift-color($link-color, $link-shade-percentage) !default;
+$link-hover-decoration:     null !default;
+
+// Paragraphs
+$paragraph-margin-bottom:        1.25rem !default;
+
+// Grid breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+
+// Grid containers
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+) !default;
+
+// Grid columns
+$grid-columns:                12 !default;
+$grid-gutter-width:           1.5rem !default;
+$grid-row-columns:            6 !default;
+
+$gutters: $spacers !default;
+
+// Container padding
+$container-padding-x: $grid-gutter-width * 1.5 !default;
+
+// Components
+$border-width:                1px !default;
+$border-color:                $gray-300 !default;
+$component-active-color:      $white !default;
+$component-active-bg:         $primary !default;
+
+// Typography
+$font-family-sans-serif:      "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$font-size-sm:                $font-size-base * .875 !default;
+$font-size-lg:                $font-size-base * 1.25 !default;
+
+$font-weight-lighter:         lighter !default;
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-bold:            700 !default;
+$font-weight-bolder:          bolder !default;
+
+$font-weight-base:            $font-weight-normal !default;
+
+$line-height-base:            1.75 !default;
+$line-height-sm:              1.5 !default;
+$line-height-lg:              2.25 !default;
+
+$h1-font-size:                $font-size-base * 2.5 !default;
+$h2-font-size:                $font-size-base * 2 !default;
+$h3-font-size:                $font-size-base * 1.25 !default;
+$h4-font-size:                $font-size-base * 1 !default;
+$h5-font-size:                $font-size-base * .9375 !default;
+$h6-font-size:                $font-size-base * .875 !default;
+
+$headings-margin-bottom:      $spacer / 1.5 !default;
+$headings-font-family:        null !default;
+$headings-font-weight:        700 !default;
+$headings-line-height:        1.2 !default;
+$headings-color:              null !default;
+
+$display-font-sizes: (
+  1: 4.5rem,
+  2: 4rem,
+  3: 3.5rem,
+  4: 3rem,
+  5: 2.5rem,
+  6: 2rem
+) !default;
+
+$display-font-weight:            100 !default;
+$display-line-height:            $headings-line-height !default;
+$lead-font-size:                 $font-size-base * 1.25 !default;
+$lead-font-weight:               200 !default;
+$small-font-size:                .875em !default;
+
+// Buttons + Forms
+$input-btn-padding-y:            .5rem !default;
+$input-btn-padding-x:            1rem !default;
+$input-btn-font-family:          null !default;
+$input-btn-font-size:            $font-size-base !default;
+
+$input-btn-focus-width:          .125rem !default;
+$input-btn-focus-color-opacity:  .25 !default;
+$input-btn-focus-color:          rgba($component-active-bg, $input-btn-focus-color-opacity) !default;
+$input-btn-focus-blur:           .5rem !default;
+$input-btn-focus-box-shadow:     0 0 $input-btn-focus-blur $input-btn-focus-width $input-btn-focus-color !default;
+
+$input-btn-padding-y-sm:         .125rem !default;
+$input-btn-padding-x-sm:         .5rem !default;
+
+$input-btn-padding-y-lg:         1rem !default;
+$input-btn-padding-x-lg:         1rem !default;
+
+$input-btn-border-width:         $border-width !default;
+
+// Buttons
+$btn-padding-y:               $input-btn-padding-y !default;
+$btn-padding-x:               $input-btn-padding-x * 1.5 !default;
+$btn-font-family:             $input-btn-font-family !default;
+
+$btn-padding-y-sm:            $input-btn-padding-y-sm !default;
+$btn-padding-x-sm:            $input-btn-padding-x-sm * 2 !default;
+
+$btn-padding-y-lg:            $input-btn-padding-y-lg !default;
+$btn-padding-x-lg:            $input-btn-padding-x-lg * 3 !default;
+
+$btn-border-width:            $input-btn-border-width !default;
+
+$btn-font-weight:             $font-weight-normal !default;
+$btn-focus-width:             $input-btn-focus-width !default;
+
+// Forms
+$input-padding-y:             $input-btn-padding-y !default;
+$input-padding-x:             $input-btn-padding-x !default;
+$input-font-family:           $input-btn-font-family !default;
+$input-font-size:             $input-btn-font-size !default;
+$input-font-weight:           $font-weight-base !default;
+
+$input-padding-y-sm:          $input-btn-padding-y-sm !default;
+$input-padding-x-sm:          $input-btn-padding-x-sm !default;
+
+$input-padding-y-lg:          $input-btn-padding-y-lg !default;
+$input-padding-x-lg:          $input-btn-padding-x-lg !default;
+
+$input-bg:                    $white !default;
+
+$input-color:                 $body-color !default;
+$input-border-color:          $gray-400 !default;
+$input-border-width:          $input-btn-border-width !default;
+
+$input-focus-bg:              $input-bg !default;
+$input-focus-border-color:    tint-color($component-active-bg, 50%) !default;
+$input-focus-color:           $input-color !default;
+
+$input-placeholder-color:     $gray-600 !default;
+
+// Navbar
+$navbar-padding-y:               $spacer * .5 !default;
+$navbar-padding-x:               null !default;
+
+$navbar-nav-link-padding-x:      1rem !default;
+
+$navbar-brand-font-size:         $font-size-lg !default;
+$navbar-brand-height:            $navbar-brand-font-size * $line-height-base !default; 
+
+// Hamburger
+$hamburger-padding-x:            6px !default;
+$hamburger-padding-y:            6px !default;
+$hamburger-layer-width:          30px !default;
+$hamburger-layer-height:         2px !default;
+$hamburger-layer-spacing:        8px !default;
+$hamburger-layer-color:          $primary !default;
+$hamburger-layer-border-radius:  4px !default;
+$hamburger-hover-opacity:        0.7 !default;
+$hamburger-active-layer-color:   $secondary !default;
+$hamburger-active-hover-opacity: $hamburger-hover-opacity !default;
+$hamburger-types:                (collapse) !default; // Only load this animation. Extend this class on .hamburger
+
+// Magnific Popup
+
+// overlay
+$mfp-overlay-color:                   #fff !default;                    // Color of overlay screen
+$mfp-overlay-opacity:                 0.8 !default;                        // Opacity of overlay screen
+$mfp-shadow:                          0 0 8px rgba(0, 0, 0, 0.6) !default; // Shadow on image or iframe
+
+// spacing
+$mfp-popup-padding-left:              8px !default;                        // Padding from left and from right side
+$mfp-popup-padding-left-mobile:       6px !default;                        // Same as above, but is applied when width of window is less than 800px
+
+$mfp-z-index-base:                    1040 !default;                       // Base z-index of popup
+
+// controls
+$mfp-include-arrows:                  true !default;                       // Include styles for nav arrows
+$mfp-controls-opacity:                0.65 !default;                       // Opacity of controls
+$mfp-controls-color:                  #FFF !default;                       // Color of controls
+$mfp-controls-border-color:           #3F3F3F !default; 	                 // Border color of controls
+$mfp-inner-close-icon-color:          #333 !default;                       // Color of close button when inside
+$mfp-controls-text-color:             #CCC !default;                       // Color of preloader and "1 of X" indicator
+$mfp-controls-text-color-hover:       #FFF !default;                       // Hover color of preloader and "1 of X" indicator
+
+// Iframe-type options
+$mfp-include-iframe-type:             true !default;                       // Enable Iframe-type popups
+$mfp-iframe-padding-top:              40px !default;                       // Iframe padding top
+$mfp-iframe-background:               #000 !default;                       // Background color of iframes
+$mfp-iframe-max-width:                900px !default;                      // Maximum width of iframes
+$mfp-iframe-ratio:                    9/16 !default;                       // Ratio of iframe (9/16 = widescreen, 3/4 = standard, etc.)
+
+// Image-type options
+$mfp-include-image-type:              true !default;                       // Enable Image-type popups
+$mfp-image-background:                #444 !default;
+$mfp-image-padding-top:               40px !default;                       // Image padding top
+$mfp-image-padding-bottom:            40px !default;                       // Image padding bottom
+$mfp-include-mobile-layout-for-image: true !default;                       // Removes paddings from top and bottom
+
+// Image caption options
+$mfp-caption-title-color:             #F3F3F3 !default;                    // Caption title color
+$mfp-caption-subtitle-color:          #BDBDBD !default;                    // Caption subtitle color
+
+// A11y
+$mfp-use-visuallyhidden:              false !default;                      // Hide content from browsers, but make it available for screen readers

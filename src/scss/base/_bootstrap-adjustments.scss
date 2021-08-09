@@ -1,0 +1,86 @@
+.text-white p,
+.text-light p {
+    a {
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.text-white p {
+    a {
+        color: $white;
+    }
+}
+
+.text-light p {
+    a {
+        color: $light;
+    }
+}
+
+[class*='bg-'] {
+    .nav-tabs {
+        .nav-link {
+            &:not(.active) {
+                color: $white;
+
+                &:hover {
+                    background-color: rgba($white, 0.75);
+                    color: $body-color;
+                }
+            }
+        }
+    }
+
+    .tab-content {
+        color: $body-color;
+    }
+}
+
+// Accordion
+.accordion {
+  a.card-header {
+    text-decoration: none;
+    cursor: pointer;
+
+    h4 {
+      font-size: 0.9375em;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+
+  .card-body{
+    >*:first-child {
+      margin-top: 0;
+    }
+
+    >*:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Tabs
+.nav-tabs {
+  .nav-item {
+    h4 {
+      font-size: 0.9375em;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+
+  .tab-content .tab-pane {
+    >*:first-child {
+      margin-top: 0;
+    }
+
+    >*:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

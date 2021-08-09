@@ -1,0 +1,15 @@
+.pageheader {
+  h1.pageheader-title {
+    font-size: 0.9375rem;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .pageheader-heading {
+    @extend .display-3;
+  }
+
+  img {
+    width: 100%;
+  }
+}

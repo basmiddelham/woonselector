@@ -1,0 +1,72 @@
+/** Hide update date in post meta */
+.updated:not(.published) {
+    display: none;
+}
+
+/** Alignments */
+.alignleft,
+.alignright,
+.aligncenter,
+.alignnone {
+    margin-bottom: 1rem;
+
+    @include media-breakpoint-down(sm) {
+        width: 100%;
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    .alignleft {
+        float: left;
+        margin-right: 1.5em;
+    }
+
+    .alignright {
+        float: right;
+        margin-left: 1.5em;
+    }
+
+    .aligncenter {
+        clear: both;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/** Captions */
+.wp-caption {
+    @extend .figure;
+}
+
+.wp-caption img {
+    @extend .figure-img;
+    @extend .img-fluid;
+}
+
+.wp-caption-text {
+    @extend .figure-caption;
+
+    line-height: 1.4;
+    font-size: 0.8125rem;
+}
+
+/** Text meant only for screen readers */
+.screen-reader-text {
+    @extend .visually-hidden;
+}
+
+// Smileys
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+    border: none;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0;
+}
+
+.page-links {
+    clear: both;
+    margin: 0 0 1.5em;
+}

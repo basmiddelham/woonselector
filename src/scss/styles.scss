@@ -1,0 +1,35 @@
+// Load Bootstrap variables
+@import "base/variables";
+
+// Load Bootstrap
+@import "base/bootstrap";
+
+// Load Hamburger CSS.
+@import "../../node_modules/hamburgers/_sass/hamburgers/hamburgers";
+
+// Load Magnific Popup CSS
+@import "../../node_modules/magnific-popup/src/css/main";
+
+// Load styles
+@import "base/_bootstrap-adjustments";
+@import "base/typography";
+@import "base/global";
+@import "base/buttons";
+@import "base/forms";
+@import "base/elements";
+@import "components/social-menu";
+@import "components/wp-classes";
+@import "components/galleries";
+@import "components/widgets";
+@import "components/comments";
+@import "layouts/site";
+@import "layouts/archives";
+@import "layouts/single";
+@import "layouts/main-navigation";
+@import "layouts/footer";
+@import "flexbuilder/flexbuilder";
+
+
+.homes .card h2 {
+    font-size: 18px;
+}
