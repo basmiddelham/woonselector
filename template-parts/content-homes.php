@@ -8,7 +8,12 @@
  */
 
  // Home Attributes
-$home_atts = [];
+$post_classes = array(
+	'col-sm-6',
+	'col-lg-4',
+	'mb-4',
+	'element-item'
+);
 if (get_field('phase')) {
 	$phase = get_field('phase');
 	array_push($home_atts, $phase);
@@ -19,12 +24,11 @@ if (get_field('aantal_kamers')) {
 }
 
 ?>
-
-<article id="post-<?php the_ID(); ?>" class="col-sm-6 col-lg-4 mb-4 element-item <?php echo implode(' ', $home_atts); ?>">
+<article id="post-<?php the_ID(); ?>" <?php post_class($post_classes); ?>>
 	<div class="card h-100 w-100">
 		<?php 
-			var_dump($home_atts);
-			echo implode(' ', $home_atts);
+			// var_dump($$post_classes);
+			// echo implode(' ', $home_atts);
 		?>
 		<header class="card-header">
 			<?php the_title( '<h2 class="card-title mb-0">', '</h2>' ); ?>
