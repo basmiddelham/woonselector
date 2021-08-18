@@ -34,16 +34,18 @@ if (get_field('aantal_kamers')) {
 			<?php the_title( '<h2 class="card-title mb-0">', '</h2>' ); ?>
 		</header><!-- .entry-header -->
 		<div class="card-body">
-			<p class="card-text">Description?</p>
+			<p class="card-text">Description</p>
 			<?php
-			$term_obj_list = get_the_terms( $post->ID, 'home_status' );
-			$terms_string = join(', ', wp_list_pluck($term_obj_list, 'name'));
-			echo 'Status: ' . $terms_string . '<br>';
+			$building_term_list = get_the_terms( $post->ID, 'home_building' );
+			$building_term_string = join(', ', wp_list_pluck($building_term_list, 'name'));
+			echo 'Gebouw: ' . $building_term_string . '<br>';
+			echo 'beschikbaarheid: ' . get_field('beschikbaarheid') . '<br>';
 			echo 'Oppervlakte: ' . get_field('oppervlakte') . '<br>';
+			echo 'Verdieping: ' . get_field('verdieping') . '<br>';
 			echo 'Aantal kamers: ' . get_field('aantal_kamers') . '<br>';
 			echo 'Aantal slaapkamers: ' . get_field('slaapkamers') . '<br>';
 			echo 'Woningtype: ' . get_field('woning_type') . '<br>';
-			echo 'Huurtype: ' . get_field('phase') . '<br>';
+			echo 'Huurtype: ' . get_field('huurcategorie') . '<br>';
 			?>
 		</div>
 		<footer class="card-footer">

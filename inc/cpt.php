@@ -1,6 +1,6 @@
 <?php
 // Register Custom Post Type
-function homes_cpt() {
+function cpt_homes() {
 
 	$labels = array(
 		'name'                  => _x( 'Homes', 'Post Type General Name', 'strt' ),
@@ -35,8 +35,8 @@ function homes_cpt() {
 		'label'                 => __( 'Home', 'strt' ),
 		'description'           => __( 'A Post Type for Homes', 'strt' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'custom-fields' ),
-		'taxonomies'            => array( 'home_type', 'home_status' ),
+		'supports'              => array( 'title' ),
+		'taxonomies'            => array( 'home_type', 'home_building'),
 		'hierarchical'          => true,
 		'public'                => true,
 		'show_ui'               => true,
@@ -53,10 +53,10 @@ function homes_cpt() {
 	register_post_type( 'homes', $args );
 
 }
-add_action( 'init', 'homes_cpt', 0 );
+add_action( 'init', 'cpt_homes', 0 );
 
 // Register Custom Taxonomy
-function home_type_taxonomy() {
+function tax_home_type() {
 
 	$labels = array(
 		'name'                       => _x( 'Home Types', 'Taxonomy General Name', 'strt' ),
@@ -80,6 +80,11 @@ function home_type_taxonomy() {
 		'items_list'                 => __( 'Items list', 'strt' ),
 		'items_list_navigation'      => __( 'Items list navigation', 'strt' ),
 	);
+	$rewrite = array(
+		'slug'                       => 'type',
+		'with_front'                 => true,
+		'hierarchical'               => false,
+	);
 	$args = array(
 		'labels'                     => $labels,
 		'hierarchical'               => true,
@@ -88,19 +93,20 @@ function home_type_taxonomy() {
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
+		'rewrite'                    => $rewrite,
 	);
 	register_taxonomy( 'home_type', array( 'homes' ), $args );
 
 }
-add_action( 'init', 'home_type_taxonomy', 0 );
+add_action( 'init', 'tax_home_type', 0 );
 
 // Register Custom Taxonomy
-function home_status_taxonomy() {
+function tax_home_building() {
 
 	$labels = array(
-		'name'                       => _x( 'Home Status', 'Taxonomy General Name', 'strt' ),
-		'singular_name'              => _x( 'Home Status', 'Taxonomy Singular Name', 'strt' ),
-		'menu_name'                  => __( 'Home Status', 'strt' ),
+		'name'                       => _x( 'Home Building', 'Taxonomy General Name', 'strt' ),
+		'singular_name'              => _x( 'Home Building', 'Taxonomy Singular Name', 'strt' ),
+		'menu_name'                  => __( 'Home Building', 'strt' ),
 		'all_items'                  => __( 'All Items', 'strt' ),
 		'parent_item'                => __( 'Parent Item', 'strt' ),
 		'parent_item_colon'          => __( 'Parent Item:', 'strt' ),
@@ -119,6 +125,11 @@ function home_status_taxonomy() {
 		'items_list'                 => __( 'Items list', 'strt' ),
 		'items_list_navigation'      => __( 'Items list navigation', 'strt' ),
 	);
+	$rewrite = array(
+		'slug'                       => 'building',
+		'with_front'                 => true,
+		'hierarchical'               => false,
+	);
 	$args = array(
 		'labels'                     => $labels,
 		'hierarchical'               => true,
@@ -127,8 +138,9 @@ function home_status_taxonomy() {
 		'show_admin_column'          => true,
 		'show_in_nav_menus'          => true,
 		'show_tagcloud'              => true,
+		'rewrite'                    => $rewrite,
 	);
-	register_taxonomy( 'home_status', array( 'homes' ), $args );
+	register_taxonomy( 'home_building', array( 'homes' ), $args );
 
 }
-add_action( 'init', 'home_status_taxonomy', 0 );
+add_action( 'init', 'tax_home_building', 0 );
