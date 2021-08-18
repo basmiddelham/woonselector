@@ -1,9 +1,9 @@
 {
-    "key": "group_tax_home_type",
+    "key": "group_611cfd2c992d2",
     "title": "Woning Type",
     "fields": [
         {
-            "key": "field_6110ee83a44f8",
+            "key": "field_611cfd2c9c304",
             "label": "Aantal Eenheden",
             "name": "aantal_eenheden",
             "type": "text",
@@ -22,7 +22,7 @@
             "maxlength": ""
         },
         {
-            "key": "field_6110eea5a44f9",
+            "key": "field_611cfd2c9c30d",
             "label": "Aantal Vrije Eenheden",
             "name": "aantal_vrije_eenheden",
             "type": "text",
@@ -41,7 +41,7 @@
             "maxlength": ""
         },
         {
-            "key": "field_6110eec2a44fa",
+            "key": "field_611cfd2c9c315",
             "label": "Woonoppervlakte van",
             "name": "woonoppervlakte_van",
             "type": "text",
@@ -60,7 +60,7 @@
             "maxlength": ""
         },
         {
-            "key": "field_6110eedda44fb",
+            "key": "field_611cfd2c9c31d",
             "label": "Woonoppervlakte tot",
             "name": "woonoppervlakte_tot",
             "type": "text",
@@ -79,7 +79,7 @@
             "maxlength": ""
         },
         {
-            "key": "field_6110ef11a44fc",
+            "key": "field_611cfd2c9c323",
             "label": "Huurprijs van",
             "name": "huurprijs_van",
             "type": "text",
@@ -98,7 +98,7 @@
             "maxlength": ""
         },
         {
-            "key": "field_6110ef1ca44fd",
+            "key": "field_611cfd2c9c32b",
             "label": "Huurprijs tot",
             "name": "huurprijs_tot",
             "type": "text",
@@ -134,5 +134,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1629283144
+    "modified": 1629289793
 }

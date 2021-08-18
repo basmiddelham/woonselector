@@ -34,18 +34,24 @@ if (get_field('aantal_kamers')) {
 			<?php the_title( '<h2 class="card-title mb-0">', '</h2>' ); ?>
 		</header><!-- .entry-header -->
 		<div class="card-body">
-			<p class="card-text">Description</p>
 			<?php
+			echo 'Huurcategorie: ' . get_field('huurcategorie') . '<br>';
 			$building_term_list = get_the_terms( $post->ID, 'home_building' );
 			$building_term_string = join(', ', wp_list_pluck($building_term_list, 'name'));
 			echo 'Gebouw: ' . $building_term_string . '<br>';
-			echo 'beschikbaarheid: ' . get_field('beschikbaarheid') . '<br>';
-			echo 'Oppervlakte: ' . get_field('oppervlakte') . '<br>';
 			echo 'Verdieping: ' . get_field('verdieping') . '<br>';
+			$type_term_list = get_the_terms( $post->ID, 'home_type' );
+			$type_term_string = join(', ', wp_list_pluck($type_term_list, 'name'));
+			echo 'Type: ' . $type_term_string . '<br>';
+			echo 'Beschikbaarheid: ' . get_field('beschikbaarheid') . '<br>';
+			echo 'Huurprijs: ' . get_field('huurprijs') . '<br>';
+			echo 'Oppervlakte: ' . get_field('oppervlakte') . '<br>';
 			echo 'Aantal kamers: ' . get_field('aantal_kamers') . '<br>';
 			echo 'Aantal slaapkamers: ' . get_field('slaapkamers') . '<br>';
-			echo 'Woningtype: ' . get_field('woning_type') . '<br>';
-			echo 'Huurtype: ' . get_field('huurcategorie') . '<br>';
+			echo 'Buitenruimte Type: ' . get_field('buitenruimte_type') . '<br>';
+			echo 'Buitenruimte Oppervlakte: ' . get_field('buitenruimte_oppervlakte') . '<br>';
+			echo 'Buitenruimte Ligging: ' . get_field('buitenruimte_ligging') . '<br>';
+			echo 'Parkeerplaatsen: ' . get_field('parkeer_plaatsen') . '<br>';
 			?>
 		</div>
 		<footer class="card-footer">
