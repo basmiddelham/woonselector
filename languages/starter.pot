@@ -69,6 +69,10 @@ msgstr ""
 msgid "Flexbuilder"
 msgstr ""
 
+#: page-woningselector.php:3
+msgid "Woning selector"
+msgstr ""
+
 #. translators: %s: search query.
 #: search.php:23
 msgid "Search Results for: %s"
@@ -140,15 +144,15 @@ msgstr ""
 msgid "Item Attributes"
 msgstr ""
 
-#: inc/cpt.php:12, inc/cpt.php:67, inc/cpt.php:106
+#: inc/cpt.php:12, inc/cpt.php:67, inc/cpt.php:112
 msgid "Parent Item:"
 msgstr ""
 
-#: inc/cpt.php:13, inc/cpt.php:65, inc/cpt.php:104
+#: inc/cpt.php:13, inc/cpt.php:65, inc/cpt.php:110
 msgid "All Items"
 msgstr ""
 
-#: inc/cpt.php:14, inc/cpt.php:69, inc/cpt.php:108
+#: inc/cpt.php:14, inc/cpt.php:69, inc/cpt.php:114
 msgid "Add New Item"
 msgstr ""
 
@@ -160,15 +164,15 @@ msgstr ""
 msgid "New Item"
 msgstr ""
 
-#: inc/cpt.php:17, inc/cpt.php:70, inc/cpt.php:109
+#: inc/cpt.php:17, inc/cpt.php:70, inc/cpt.php:115
 msgid "Edit Item"
 msgstr ""
 
-#: inc/cpt.php:18, inc/cpt.php:71, inc/cpt.php:110
+#: inc/cpt.php:18, inc/cpt.php:71, inc/cpt.php:116
 msgid "Update Item"
 msgstr ""
 
-#: inc/cpt.php:19, inc/cpt.php:72, inc/cpt.php:111
+#: inc/cpt.php:19, inc/cpt.php:72, inc/cpt.php:117
 msgid "View Item"
 msgstr ""
 
@@ -212,11 +216,11 @@ msgstr ""
 msgid "Uploaded to this item"
 msgstr ""
 
-#: inc/cpt.php:30, inc/cpt.php:80, inc/cpt.php:119
+#: inc/cpt.php:30, inc/cpt.php:80, inc/cpt.php:125
 msgid "Items list"
 msgstr ""
 
-#: inc/cpt.php:31, inc/cpt.php:81, inc/cpt.php:120
+#: inc/cpt.php:31, inc/cpt.php:81, inc/cpt.php:126
 msgid "Items list navigation"
 msgstr ""
 
@@ -242,54 +246,54 @@ msgstr ""
 msgid "Home Type"
 msgstr ""
 
-#: inc/cpt.php:66, inc/cpt.php:105
+#: inc/cpt.php:66, inc/cpt.php:111
 msgid "Parent Item"
 msgstr ""
 
-#: inc/cpt.php:68, inc/cpt.php:107
+#: inc/cpt.php:68, inc/cpt.php:113
 msgid "New Item Name"
 msgstr ""
 
-#: inc/cpt.php:73, inc/cpt.php:112
+#: inc/cpt.php:73, inc/cpt.php:118
 msgid "Separate items with commas"
 msgstr ""
 
-#: inc/cpt.php:74, inc/cpt.php:113
+#: inc/cpt.php:74, inc/cpt.php:119
 msgid "Add or remove items"
 msgstr ""
 
-#: inc/cpt.php:75, inc/cpt.php:114
+#: inc/cpt.php:75, inc/cpt.php:120
 msgid "Choose from the most used"
 msgstr ""
 
-#: inc/cpt.php:76, inc/cpt.php:115
+#: inc/cpt.php:76, inc/cpt.php:121
 msgid "Popular Items"
 msgstr ""
 
-#: inc/cpt.php:77, inc/cpt.php:116
+#: inc/cpt.php:77, inc/cpt.php:122
 msgid "Search Items"
 msgstr ""
 
-#: inc/cpt.php:78, inc/cpt.php:117
+#: inc/cpt.php:78, inc/cpt.php:123
 msgid "Not Found"
 msgstr ""
 
-#: inc/cpt.php:79, inc/cpt.php:118
+#: inc/cpt.php:79, inc/cpt.php:124
 msgid "No items"
 msgstr ""
 
-#: inc/cpt.php:101
+#: inc/cpt.php:107
 msgctxt "Taxonomy General Name"
-msgid "Home Status"
+msgid "Home Building"
 msgstr ""
 
-#: inc/cpt.php:102
+#: inc/cpt.php:108
 msgctxt "Taxonomy Singular Name"
-msgid "Home Status"
+msgid "Home Building"
 msgstr ""
 
-#: inc/cpt.php:103
-msgid "Home Status"
+#: inc/cpt.php:109
+msgid "Home Building"
 msgstr ""
 
 #: inc/icons.php:273

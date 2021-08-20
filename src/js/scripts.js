@@ -18,6 +18,7 @@ import 'bootstrap/js/dist/tooltip'
 
 import './components/navigation.js';
 import './components/skip-link-focus-fix.js';
+import './components/woning-selector.js';
 
 // Web Font Loader
 WebFont.load({
@@ -42,72 +43,3 @@ $('.gallery').each(function () { // the containers for all your galleries
     });
 });
 
-
-// init Isotope
-
-// init Isotope
-var iso = new Isotope( '.grid', {
-  itemSelector: '.element-item',
-  layoutMode: 'fitRows'
-});
-
-// filter functions
-var filterFns = {
-  // show if number is greater than 50
-  numberGreaterThan50: function( itemElem ) {
-    var number = itemElem.querySelector('.number').textContent;
-    return parseInt( number, 10 ) > 50;
-  },
-  // show if name ends with -ium
-  ium: function( itemElem ) {
-    var name = itemElem.querySelector('.name').textContent;
-    return name.match( /ium$/ );
-  }
-};
-
-// bind filter button click
-var filtersElem = document.querySelector('.filters-button-group');
-filtersElem.addEventListener( 'click', function( event ) {
-  // only work with buttons
-  if ( !matchesSelector( event.target, 'button' ) ) {
-    return;
-  }
-  var filterValue = event.target.getAttribute('data-filter');
-  // use matching filter function
-  filterValue = filterFns[ filterValue ] || filterValue;
-  iso.arrange({ filter: filterValue });
-});
-
-// change is-checked class on buttons
-var buttonGroups = document.querySelectorAll('.btn-group');
-for ( var i=0, len = buttonGroups.length; i < len; i++ ) {
-  var buttonGroup = buttonGroups[i];
-  radioButtonGroup( buttonGroup );
-}
-
-function radioButtonGroup( buttonGroup ) {
-  buttonGroup.addEventListener( 'click', function( event ) {
-    // only work with buttons
-    if ( !matchesSelector( event.target, 'button' ) ) {
-      return;
-    }
-    buttonGroup.querySelector('.active').classList.remove('active');
-    event.target.classList.add('active');
-  });
-}
-
-// Isotope Filtering with select
-var $filtersSelect = $('.filters-select');
-
-// init Isotope
-var $grid = $('.grid').isotope({
-  itemSelector: '.element-item',
-  layoutMode: 'fitRows',
-  filter: $filtersSelect.val(),
-});
-
-// bind filter on select change
-$filtersSelect.on( 'change', function() {
-  // get filter value from option value
-  $grid.isotope({ filter: this.value });
-});
