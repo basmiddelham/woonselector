@@ -13,10 +13,11 @@ get_header();
 // Get the posts:
 $args = array(
 	'numberposts' => -1,
-	'post_type'   => 'homes'
+	'post_type'   => 'homes',
+	'orderby'     => 'name',
+	'order'       => 'ASC'
 );
 $homes = get_posts( $args );
-
 ?>
 
 <div class="site">
@@ -25,7 +26,7 @@ $homes = get_posts( $args );
 			<div class="col">
 				<label for="buildingSelect" class="form-label"><?php esc_html_e('Building', 'strt'); ?></label>
 				<select id="buildingSelect" class="filters-select form-select form-select-sm mb-2" value-group="building">
-					<option value="*">show all</option>
+					<option value="*"><?php echo __('Show all', 'strt'); ?></option>
 					<?php 
 					foreach ( get_terms( array('taxonomy' => 'home_building') ) as $building ) :
 						echo '<option value=".' . $building->slug . '">' . $building->name . '</option>';
@@ -36,7 +37,7 @@ $homes = get_posts( $args );
 			<div class="col">
 				<label for="typeSelect" class="form-label"><?php esc_html_e('Type', 'strt'); ?></label>
 				<select id="typeSelect" class="filters-select form-select form-select-sm mb-2" value-group="type">
-					<option value="*">show all</option>
+					<option value="*"><?php echo __('Show all', 'strt'); ?></option>
 					<?php 
 					foreach ( get_terms( array('taxonomy' => 'home_type') ) as $type ) :
 						echo '<option value=".' . $type->slug . '">' . $type->name . '</option>';
@@ -53,19 +54,25 @@ $homes = get_posts( $args );
 			</div>
 		</div>
 
-		<div id="sorts" class="button-group">
-			<button class="btn btn-primary btn-sm button is-checked" data-sort-value="original-order">original order</button>
+		<div id="sorts" class="sort-button-group">
+			<button class="btn btn-primary btn-sm button active" data-sort-value="original-order">original order</button>
 			<button class="btn btn-primary btn-sm button" data-sort-value="name">name</button>
-			<button class="btn btn-primary btn-sm button" data-sort-value="category">category</button>
 			<button class="btn btn-primary btn-sm button" data-sort-value="building">building</button>
+			<button class="btn btn-primary btn-sm button" data-sort-value="category">category</button>
 			<button class="btn btn-primary btn-sm button" data-sort-value="type">type</button>
+			<button class="btn btn-primary btn-sm button" data-sort-value="surface" data-sort-direction="desc">surface
+				<span class="icon-sort"><?php echo get_theme_svg('chervron-up') ?></span>
+			</button>
+			<button class="btn btn-primary btn-sm button" data-sort-value="price" data-sort-direction="desc">price
+				<span class="icon-sort"><?php echo get_theme_svg('chervron-up') ?></span>
+			</button>
 		</div>
 
 		<?php if ( $homes ) : ?>
 		<div class="table-responsive">
 			<table class="table table-sm caption-top">
 				<?php $homes_count = wp_count_posts($post_type = 'homes'); ?>
-				<caption class="filter-count"><span></span><?php echo $homes_count->publish; ?></caption>
+				<caption class="filter-count"><span></span><?php echo ' ' . __('of', 'strt') . ' ' . $homes_count->publish . ' ' . __('Homes', 'strt'); ?></caption>
 				<thead class="table-dark">
 					<tr class="grid-item">
 						<th scope="col" class="name text-nowrap"><?php esc_html_e('Name', 'strt'); ?></th>
@@ -97,7 +104,10 @@ $homes = get_posts( $args );
 							$availability_color = 'table-danger';
 						endif;
 					?>
-					<tr class="grid-item <?php echo $building_slug . ' ' . $type_slug ?>">
+					<tr class="grid-item <?php echo $building_slug . ' ' . $type_slug ?>"
+						data-surface="<?php echo $surface; ?>"
+						data-price="<?php echo $price; ?>" 
+					>
 						<th class="name text-nowrap" scope="row"><a href="<?php the_permalink($post->ID) ?>"><?php echo get_the_title($post->ID) ?></a></th>
 						<td class="building text-nowrap"><?php echo $building_name ?></td>
 						<td class="category text-nowrap"><?php echo $category ?></td>

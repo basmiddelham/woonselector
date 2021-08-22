@@ -21,3 +21,15 @@
     .grid-item .surface { width: 10%; }
     .grid-item .price { width: 10%; }
 }
+
+.icon-sort {
+    svg {
+        transition: transform .3s;
+        width: 10px;
+        margin-left: 0.5rem;
+    }
+
+    &.sort-down svg {
+        transform: rotate(180deg);
+    }
+}
