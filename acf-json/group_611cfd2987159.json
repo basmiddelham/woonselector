@@ -65,7 +65,7 @@
             "key": "field_611cfd298adab",
             "label": "Huurprijs",
             "name": "price",
-            "type": "text",
+            "type": "number",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -77,8 +77,10 @@
             "default_value": "",
             "placeholder": "",
             "prepend": "",
-            "append": "p.m.",
-            "maxlength": ""
+            "append": ",-",
+            "min": "",
+            "max": "",
+            "step": ""
         },
         {
             "key": "field_611cfd298adb4",
@@ -252,5 +254,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1629637189
+    "modified": 1629655390
 }

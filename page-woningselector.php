@@ -9,27 +9,49 @@
 
 
 get_header();
+
+// Get the posts:
+$args = array(
+	'numberposts' => -1,
+	'post_type'   => 'homes'
+);
+$homes = get_posts( $args );
+
 ?>
 
 <div class="site">
 	<main class="site-main container" id="content">
-		<div id="filters" class="button-group">
-			<button class="btn btn-primary btn-sm is-checked" data-filter="*">show all</button>
-			<button class="btn btn-primary btn-sm" data-filter=".home_building-the-w">The W</button>
-			<button class="btn btn-primary btn-sm" data-filter=".home_building-the-n">The N</button>
-			<button class="btn btn-primary btn-sm" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</button>
-			<button class="btn btn-primary btn-sm" data-filter=":not(.transition)">not transition</button>
-			<button class="btn btn-primary btn-sm" data-filter=".metal:not(.transition)">metal but not transition</button>
-			<button class="btn btn-primary btn-sm" data-filter="numberGreaterThan50">number > 50</button>
-			<button class="btn btn-primary btn-sm" data-filter="ium">name ends with &ndash;ium</button>
-		</div>
+		<div class="row">
+			<div class="col">
+				<label for="buildingSelect" class="form-label"><?php esc_html_e('Building', 'strt'); ?></label>
+				<select id="buildingSelect" class="filters-select form-select form-select-sm mb-2" value-group="building">
+					<option value="*">show all</option>
+					<?php 
+					foreach ( get_terms( array('taxonomy' => 'home_building') ) as $building ) :
+						echo '<option value=".' . $building->slug . '">' . $building->name . '</option>';
+					endforeach;
+					?>
+				</select>
+			</div>
+			<div class="col">
+				<label for="typeSelect" class="form-label"><?php esc_html_e('Type', 'strt'); ?></label>
+				<select id="typeSelect" class="filters-select form-select form-select-sm mb-2" value-group="type">
+					<option value="*">show all</option>
+					<?php 
+					foreach ( get_terms( array('taxonomy' => 'home_type') ) as $type ) :
+						echo '<option value=".' . $type->slug . '">' . $type->name . '</option>';
+					endforeach;
+					?>
+				</select>
+			</div>
+			<div class="col">
+				<label for="priceRange" class="form-label"><?php esc_html_e('Price range:', 'strt'); ?>
+					<span class="price-range-output"></span>
+				</label>
+				<div id="priceRange" class="price-range"></div>
 
-		<select class="filters-select form-select form-select-sm mb-2 w-10">
-			<option value="*">show all</option>
-			<option value=".home_building-the-w">The W</option>
-			<option value=".home_building-the-n">The N</option>
-			<option value=".home_building-de-flora">De Flora</option>
-		</select>
+			</div>
+		</div>
 
 		<div id="sorts" class="button-group">
 			<button class="btn btn-primary btn-sm button is-checked" data-sort-value="original-order">original order</button>
@@ -39,23 +61,16 @@ get_header();
 			<button class="btn btn-primary btn-sm button" data-sort-value="type">type</button>
 		</div>
 
-		<?php 
-		$args = array(
-			'post_type'      => array( 'homes' ),
-			'nopaging'       => true,
-			'posts_per_page' => '-1',
-		);
-		$query = new WP_Query( $args );
-		if ( $query->have_posts() ) :
-		?>
+		<?php if ( $homes ) : ?>
 		<div class="table-responsive">
 			<table class="table table-sm caption-top">
-				<caption class="filter-count">List of users</caption>
+				<?php $homes_count = wp_count_posts($post_type = 'homes'); ?>
+				<caption class="filter-count"><span></span><?php echo $homes_count->publish; ?></caption>
 				<thead class="table-dark">
-					<tr class="element-item">
+					<tr class="grid-item">
 						<th scope="col" class="name text-nowrap"><?php esc_html_e('Name', 'strt'); ?></th>
-						<th scope="col" class="category text-nowrap"><?php esc_html_e('Category', 'strt'); ?></th>
 						<th scope="col" class="building text-nowrap"><?php esc_html_e('Building', 'strt'); ?></th>
+						<th scope="col" class="category text-nowrap"><?php esc_html_e('Category', 'strt'); ?></th>
 						<th scope="col" class="type"><?php esc_html_e('Type', 'strt'); ?></th>
 						<th scope="col" class="surface text-end"><?php esc_html_e('Surface', 'strt'); ?></tdth>
 						<th scope="col" class="price text-end"><?php esc_html_e('Price', 'strt'); ?></th>
@@ -63,15 +78,17 @@ get_header();
 				</thead>
 				<tbody class="grid">
 					<?php 
-					while ( $query->have_posts() ) : $query->the_post(); 
-						$building_term_list   = get_the_terms( $post->ID, 'home_building' );
-						$building_term_string = join(', ', wp_list_pluck($building_term_list, 'name'));
-						$type_term_list       = get_the_terms( $post->ID, 'home_type' );
-						$type_term_string     = join(', ', wp_list_pluck($type_term_list, 'name'));
-						$category             = get_field('category');
-						$availability         = get_field('availability');
-						$surface              = get_field('surface');
-						$price                = get_field('price');
+					foreach ( $homes as $post ) : 
+						$building_list = get_the_terms( $post->ID, 'home_building' );
+						$building_name = join(', ', wp_list_pluck($building_list, 'name'));
+						$building_slug = join(', ', wp_list_pluck($building_list, 'slug'));
+						$type_list     = get_the_terms( $post->ID, 'home_type' );
+						$type_name     = join(', ', wp_list_pluck($type_list, 'name'));
+						$type_slug     = join(', ', wp_list_pluck($type_list, 'slug'));
+						$category      = get_post_meta( $post->ID, 'category', true );
+						$availability  = get_post_meta( $post->ID, 'availability', true );
+						$surface       = get_post_meta( $post->ID, 'surface', true );
+						$price         = get_post_meta( $post->ID, 'price', true );
 						if ( $availability === 'beschikbaar') :
 							$availability_color = 'table-success';
 						elseif ( $availability === 'onder optie' || $availability === 'later in verhuur' || $availability === 'verhuurd onder voorbehoud' ) :
@@ -80,23 +97,19 @@ get_header();
 							$availability_color = 'table-danger';
 						endif;
 					?>
-					<tr class="element-item">
-						<th class="name" scope="row"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></th>
-						<td class="category"><?php echo $category ?></td>
-						<td class="building"><?php echo $building_term_string ?></td>
-						<td class="type"><?php echo $type_term_string ?></td>
+					<tr class="grid-item <?php echo $building_slug . ' ' . $type_slug ?>">
+						<th class="name text-nowrap" scope="row"><a href="<?php the_permalink($post->ID) ?>"><?php echo get_the_title($post->ID) ?></a></th>
+						<td class="building text-nowrap"><?php echo $building_name ?></td>
+						<td class="category text-nowrap"><?php echo $category ?></td>
+						<td class="type"><?php echo $type_name ?></td>
 						<td class="surface text-end"><?php echo ($surface ? $surface . 'm<sup>2</sup>' : ''); ?></td>
 						<td class="price text-end <?php echo $availability_color ?>" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo $availability ?>"><?php echo ($price ? $price . ',-' : ''); ?></td>
 					</tr>
-					<?php endwhile; ?>
+					<?php endforeach; ?>
 				</tbody>
 			</table>
 		</div>
-
 		<?php endif; ?>
-		<?php wp_reset_postdata(); ?>
-
-		
 
 	</main><!-- #content -->
 </div><!-- .site -->

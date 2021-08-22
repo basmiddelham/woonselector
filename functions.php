@@ -135,12 +135,14 @@ function strt_scripts() {
 
 	// Enqueue styles
 	wp_enqueue_style( 'strt-stylesheet', get_stylesheet_directory_uri() . '/dist/css/styles.css', array(), STRT_VERSION );
+	wp_enqueue_style( 'strt-jqueryui', '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css', array(), STRT_VERSION );
 
 	// Enqueue scripts
 	wp_enqueue_script( 'strt-scripts', get_template_directory_uri() . '/dist/js/scripts.js', array( 'jquery' ), STRT_VERSION, true );
 
 	// Enqueue Isotope
 	wp_enqueue_script( 'strt-isotope', '//npmcdn.com/isotope-layout@3/dist/isotope.pkgd.min.js', array( 'jquery' ), STRT_VERSION );
+	wp_enqueue_script( 'strt-jqueryui', '//code.jquery.com/ui/1.12.1/jquery-ui.js', array( 'jquery' ), STRT_VERSION );
 
 	// Pass translatable strings to script
 	wp_localize_script('strt-scripts', 'ScreenReaderText', $strt_l10n);
