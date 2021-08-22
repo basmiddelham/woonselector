@@ -93,7 +93,7 @@ export const watchForChanges = () => {
 const server = browserSync.create();
 export const serve = done => {
   server.init({
-    proxy: 'https://test.local' // put your local website link here
+    proxy: 'https://woonselector.local' // put your local website link here
   });
   done();
 };

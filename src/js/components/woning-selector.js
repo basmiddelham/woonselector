@@ -1,53 +1,63 @@
+import $ from 'jquery';
+
 // external js: isotope.pkgd.js
 
 // init Isotope
-var iso = new Isotope( '.grid', {
-    itemSelector: '.element-item',
-    layoutMode: 'vertical'
+var $grid = $('.grid').isotope({
+  itemSelector: '.element-item',
+  layoutMode: 'vertical',
+  getSortData: {
+    name: '.name',
+    category: '.category',
+    building: '.building',
+    floor: '.floor',
+    type: '.type',
+  },
+  hiddenStyle: {
+    opacity: 0,
+    transform: 'scaleY(0.001)'
+  },
+  visibleStyle: {
+    opacity: 1,
+    transform: 'scaleY(1)'
+  },
+  // stagger: 50
 });
-  
-  // filter functions
-//   var filterFns = {
-//     // show if number is greater than 50
-//     numberGreaterThan50: function( itemElem ) {
-//       var number = itemElem.querySelector('.number').textContent;
-//       return parseInt( number, 10 ) > 50;
-//     },
-//     // show if name ends with -ium
-//     ium: function( itemElem ) {
-//       var name = itemElem.querySelector('.name').textContent;
-//       return name.match( /ium$/ );
-//     }
-//   };
-  
-  // bind filter button click
-  var filtersElem = document.querySelector('.filters-button-group');
-  filtersElem.addEventListener( 'click', function( event ) {
-    // only work with buttons
-    if ( !matchesSelector( event.target, 'button' ) ) {
-      return;
-    }
-    var filterValue = event.target.getAttribute('data-filter');
-    // use matching filter function
-    filterValue = filterFns[ filterValue ] || filterValue;
-    iso.arrange({ filter: filterValue });
+
+// filter functions
+var filterFns = {
+  // show if number is greater than 50
+  numberGreaterThan50: function() {
+    var number = $(this).find('.number').text();
+    return parseInt( number, 10 ) > 50;
+  },
+  // show if name ends with -ium
+  ium: function() {
+    var name = $(this).find('.name').text();
+    return name.match( /ium$/ );
+  }
+};
+
+// bind filter button click
+$('#filters').on( 'click', 'button', function() {
+  var filterValue = $( this ).attr('data-filter');
+  // use filterFn if matches value
+  filterValue = filterFns[ filterValue ] || filterValue;
+  $grid.isotope({ filter: filterValue });
+});
+
+// bind sort button click
+$('#sorts').on( 'click', 'button', function() {
+  var sortValue = $(this).attr('data-sort-value');
+  $grid.isotope({ sortBy: sortValue });
+});
+
+// change is-checked class on buttons
+$('.button-group').each( function( i, buttonGroup ) {
+  var $buttonGroup = $( buttonGroup );
+  $buttonGroup.on( 'click', 'button', function() {
+    $buttonGroup.find('.is-checked').removeClass('is-checked');
+    $( this ).addClass('is-checked');
   });
-  
-  // change is-checked class on buttons
-  var buttonGroups = document.querySelectorAll('.button-group');
-  for ( var i=0, len = buttonGroups.length; i < len; i++ ) {
-    var buttonGroup = buttonGroups[i];
-    radioButtonGroup( buttonGroup );
-  }
-  
-  function radioButtonGroup( buttonGroup ) {
-    buttonGroup.addEventListener( 'click', function( event ) {
-      // only work with buttons
-      if ( !matchesSelector( event.target, 'button' ) ) {
-        return;
-      }
-      buttonGroup.querySelector('.is-checked').classList.remove('is-checked');
-      event.target.classList.add('is-checked');
-    });
-  }
+});
   

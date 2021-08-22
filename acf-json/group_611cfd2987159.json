@@ -5,7 +5,7 @@
         {
             "key": "field_611cfd298ad91",
             "label": "Huurcategorie",
-            "name": "huurcategorie",
+            "name": "category",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -24,7 +24,7 @@
         {
             "key": "field_611cfd298ad99",
             "label": "Verdieping",
-            "name": "verdieping",
+            "name": "floor",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -45,7 +45,7 @@
         {
             "key": "field_611cfd298ada1",
             "label": "Beschikbaarheid",
-            "name": "beschikbaarheid",
+            "name": "availability",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -64,7 +64,7 @@
         {
             "key": "field_611cfd298adab",
             "label": "Huurprijs",
-            "name": "huurprijs",
+            "name": "price",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -83,7 +83,7 @@
         {
             "key": "field_611cfd298adb4",
             "label": "Oppervlakte",
-            "name": "oppervlakte",
+            "name": "surface",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -104,7 +104,7 @@
         {
             "key": "field_611cfd298adbc",
             "label": "Aantal kamers",
-            "name": "aantal_kamers",
+            "name": "room",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -125,7 +125,7 @@
         {
             "key": "field_611cfd298adc4",
             "label": "Aantal slaapkamers",
-            "name": "aantal_slaapkamers",
+            "name": "bedrooms",
             "type": "number",
             "instructions": "",
             "required": 0,
@@ -146,7 +146,7 @@
         {
             "key": "field_611cfd298adcc",
             "label": "Buitenruimte Type",
-            "name": "buitenruimte_type",
+            "name": "outdoor_space_type",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -165,7 +165,7 @@
         {
             "key": "field_611cfd298add5",
             "label": "Buitenruimte Oppervlakte",
-            "name": "buitenruimte_oppervlakte",
+            "name": "outdoor_space_surface",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -184,7 +184,7 @@
         {
             "key": "field_611cfd298addd",
             "label": "Buitenruimte Ligging",
-            "name": "buitenruimte_ligging",
+            "name": "outdoor_space_orientation",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -203,7 +203,7 @@
         {
             "key": "field_611cfd298ade5",
             "label": "Parkeer Plaatsen",
-            "name": "parkeer_plaatsen",
+            "name": "parking_space",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -252,5 +252,5 @@
     ],
     "active": true,
     "description": "",
-    "modified": 1629357672
+    "modified": 1629637189
 }

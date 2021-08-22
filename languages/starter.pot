@@ -73,6 +73,30 @@ msgstr ""
 msgid "Woning selector"
 msgstr ""
 
+#: page-woningselector.php:68
+msgid "Name"
+msgstr ""
+
+#: page-woningselector.php:69, fields/flexbuilder/posts.php:54
+msgid "Category"
+msgstr ""
+
+#: page-woningselector.php:70
+msgid "Building"
+msgstr ""
+
+#: page-woningselector.php:71
+msgid "Type"
+msgstr ""
+
+#: page-woningselector.php:72
+msgid "Surface"
+msgstr ""
+
+#: page-woningselector.php:73
+msgid "Price"
+msgstr ""
+
 #. translators: %s: search query.
 #: search.php:23
 msgid "Search Results for: %s"
@@ -554,10 +578,6 @@ msgstr ""
 
 #: fields/flexbuilder/posts.php:63
 msgid "Posts options"
-msgstr ""
-
-#: fields/flexbuilder/posts.php:54
-msgid "Category"
 msgstr ""
 
 #: fields/flexbuilder/posts.php:47
