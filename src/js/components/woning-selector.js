@@ -50,6 +50,12 @@ import $ from 'jquery';
 
 
 // init Isotope
+// initial values
+var min = 0;
+var max = 4000;
+var pricesArray = [];
+
+
 var $grid = $('.grid').isotope({
   itemSelector: '.grid-item',
   layoutMode: 'vertical',
@@ -61,6 +67,15 @@ var $grid = $('.grid').isotope({
     type: '.type',
     surface: '[data-surface] parseInt',
     price: '[data-price] parseInt',
+  },
+  filter: function( i, itemElem ) {
+    var $number = $( itemElem ).find('.price');
+    var number = parseInt( $number.text(), 10 );
+    // Gather all prices in an pricesArray
+    if ( pricesArray.indexOf(number) === -1 ) {
+      pricesArray.push(number);
+    }
+    return number >= min && number <= max;
   },
   sortAscending: {
     surface: false,
@@ -77,15 +92,38 @@ var $grid = $('.grid').isotope({
 var iso = $grid.data('isotope');
 var $filterCount = $('.filter-count span');
 
-// bind filter button click
-$('#filters').on( 'click', 'button', function() {
-  var filterValue = $( this ).attr('data-filter');
-  // use filterFn if matches value
-  filterValue = filterFns[ filterValue ] || filterValue;
-  $grid.isotope({ filter: filterValue });
-  updateFilterCount();
+// Price Range
+// ------------------------------------>
+// Calculate highest and lowest numbers
+max = Math.max.apply(Math, pricesArray);
+min = Math.min.apply(Math, pricesArray);
+
+// Initiate jQuery UI slider
+var $range = $('.price-range').slider({
+  range: true,
+  min: min,
+  max: max,
+  values: [ min, max ],
+  slide: function( event, ui ) {
+    min = ui.values[0];
+    max = ui.values[1];
+    updateOutput();
+    updateFilterCount();
+    $grid.isotope();
+
+  }
 });
 
+// Display ranges text
+var $rangeOutput = $('.price-range-output');
+function updateOutput() {
+  $rangeOutput.text( min + ' - ' + max );
+}
+updateOutput();
+
+
+
+// Sort
 $('.sort-button-group').on( 'click', 'button', function() {
   // Get the element name to sort
   var sortValue = $(this).attr('data-sort-value');
@@ -105,10 +143,11 @@ $('.sort-button-group').on( 'click', 'button', function() {
   otherIcons.toggleClass('sort-down');
 });
 
-// store filter for each group
+// Filters
 var filters = {};
 
 $('.filters-select').on( 'change', function( event ) {
+  console.log('price chanhe');
   var $select = $( event.target );
   // get group key
   var filterGroup = $select.attr('value-group');

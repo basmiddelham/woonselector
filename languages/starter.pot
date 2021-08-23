@@ -73,27 +73,43 @@ msgstr ""
 msgid "Woning selector"
 msgstr ""
 
-#: page-woningselector.php:68
-msgid "Name"
-msgstr ""
-
-#: page-woningselector.php:69, fields/flexbuilder/posts.php:54
-msgid "Category"
-msgstr ""
-
-#: page-woningselector.php:70
+#: page-woningselector.php:27, page-woningselector.php:79
 msgid "Building"
 msgstr ""
 
-#: page-woningselector.php:71
+#: page-woningselector.php:29, page-woningselector.php:40
+msgid "Show all"
+msgstr ""
+
+#: page-woningselector.php:38, page-woningselector.php:81
 msgid "Type"
 msgstr ""
 
-#: page-woningselector.php:72
+#: page-woningselector.php:49
+msgid "Price range:"
+msgstr ""
+
+#: page-woningselector.php:75
+msgid "of"
+msgstr ""
+
+#: page-woningselector.php:75, inc/cpt.php:8
+msgid "Homes"
+msgstr ""
+
+#: page-woningselector.php:78
+msgid "Name"
+msgstr ""
+
+#: page-woningselector.php:80, fields/flexbuilder/posts.php:54
+msgid "Category"
+msgstr ""
+
+#: page-woningselector.php:82
 msgid "Surface"
 msgstr ""
 
-#: page-woningselector.php:73
+#: page-woningselector.php:83
 msgid "Price"
 msgstr ""
 
@@ -150,10 +166,6 @@ msgstr ""
 #: inc/cpt.php:7
 msgctxt "Post Type Singular Name"
 msgid "Home"
-msgstr ""
-
-#: inc/cpt.php:8
-msgid "Homes"
 msgstr ""
 
 #: inc/cpt.php:9, inc/cpt.php:35
@@ -320,7 +332,7 @@ msgstr ""
 msgid "Home Building"
 msgstr ""
 
-#: inc/icons.php:273
+#: inc/icons.php:274
 msgid "Social links"
 msgstr ""
 

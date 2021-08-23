@@ -18,6 +18,7 @@ $args = array(
 	'order'       => 'ASC'
 );
 $homes = get_posts( $args );
+
 ?>
 
 <div class="site">
