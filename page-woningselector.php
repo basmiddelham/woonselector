@@ -21,16 +21,35 @@ $homes = get_posts( $args );
 
 ?>
 
+
 <div class="site">
 	<main class="site-main container" id="content">
 		<div class="row">
+			<div class="col">
+				<label for="availabiltySelect" class="form-label"><?php esc_html_e('Availability', 'strt'); ?></label>
+				<select id="availabiltySelect" class="filters-select form-select form-select-sm mb-2" value-group="availabily">
+					<option value="*"><?php echo __('Show all', 'strt'); ?></option>
+					<?php 
+					$availabilityArray = [];
+					foreach ( $homes as $post ) :
+						$availability = get_post_meta( $post->ID, 'availability', true );
+						if ( ! in_array( $availability, $availabilityArray ) ) :
+							array_push( $availabilityArray, $availability );
+						endif;
+					endforeach;
+					foreach ( $availabilityArray as $availabilityTerm ) : 
+						echo '<option value=".' . $availabilityTerm . '">' . $availabilityTerm . '</option>';
+					endforeach;
+					?>
+				</select>
+			</div>
 			<div class="col">
 				<label for="buildingSelect" class="form-label"><?php esc_html_e('Building', 'strt'); ?></label>
 				<select id="buildingSelect" class="filters-select form-select form-select-sm mb-2" value-group="building">
 					<option value="*"><?php echo __('Show all', 'strt'); ?></option>
 					<?php 
 					foreach ( get_terms( array('taxonomy' => 'home_building') ) as $building ) :
-						echo '<option value=".' . $building->slug . '">' . $building->name . '</option>';
+						echo '<option value=".' . $building->slug . '">' . $building->name . ' (' . $building->count . ')</option>';
 					endforeach;
 					?>
 				</select>
@@ -41,7 +60,7 @@ $homes = get_posts( $args );
 					<option value="*"><?php echo __('Show all', 'strt'); ?></option>
 					<?php 
 					foreach ( get_terms( array('taxonomy' => 'home_type') ) as $type ) :
-						echo '<option value=".' . $type->slug . '">' . $type->name . '</option>';
+						echo '<option value=".' . $type->slug . '">' . $type->name . ' (' . $type->count . ')</option>';
 					endforeach;
 					?>
 				</select>
@@ -57,10 +76,18 @@ $homes = get_posts( $args );
 
 		<div id="sorts" class="sort-button-group">
 			<button class="btn btn-primary btn-sm button active" data-sort-value="original-order">original order</button>
-			<button class="btn btn-primary btn-sm button" data-sort-value="name">name</button>
-			<button class="btn btn-primary btn-sm button" data-sort-value="building">building</button>
-			<button class="btn btn-primary btn-sm button" data-sort-value="category">category</button>
-			<button class="btn btn-primary btn-sm button" data-sort-value="type">type</button>
+			<button class="btn btn-primary btn-sm button" data-sort-value="name">name
+				<span class="icon-sort"><?php echo get_theme_svg('chervron-up') ?></span>
+			</button>
+			<button class="btn btn-primary btn-sm button" data-sort-value="building">building
+				<span class="icon-sort"><?php echo get_theme_svg('chervron-up') ?></span>
+			</button>
+			<button class="btn btn-primary btn-sm button" data-sort-value="category">category
+				<span class="icon-sort"><?php echo get_theme_svg('chervron-up') ?></span>
+			</button>
+			<button class="btn btn-primary btn-sm button" data-sort-value="type">type
+				<span class="icon-sort"><?php echo get_theme_svg('chervron-up') ?></span>
+			</button>
 			<button class="btn btn-primary btn-sm button" data-sort-value="surface" data-sort-direction="desc">surface
 				<span class="icon-sort"><?php echo get_theme_svg('chervron-up') ?></span>
 			</button>

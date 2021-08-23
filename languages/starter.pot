@@ -73,43 +73,43 @@ msgstr ""
 msgid "Woning selector"
 msgstr ""
 
-#: page-woningselector.php:27, page-woningselector.php:79
+#: page-woningselector.php:28, page-woningselector.php:80
 msgid "Building"
 msgstr ""
 
-#: page-woningselector.php:29, page-woningselector.php:40
+#: page-woningselector.php:30, page-woningselector.php:41
 msgid "Show all"
 msgstr ""
 
-#: page-woningselector.php:38, page-woningselector.php:81
+#: page-woningselector.php:39, page-woningselector.php:82
 msgid "Type"
 msgstr ""
 
-#: page-woningselector.php:49
+#: page-woningselector.php:50
 msgid "Price range:"
 msgstr ""
 
-#: page-woningselector.php:75
+#: page-woningselector.php:76
 msgid "of"
 msgstr ""
 
-#: page-woningselector.php:75, inc/cpt.php:8
+#: page-woningselector.php:76, inc/cpt.php:8
 msgid "Homes"
 msgstr ""
 
-#: page-woningselector.php:78
+#: page-woningselector.php:79
 msgid "Name"
 msgstr ""
 
-#: page-woningselector.php:80, fields/flexbuilder/posts.php:54
+#: page-woningselector.php:81, fields/flexbuilder/posts.php:54
 msgid "Category"
 msgstr ""
 
-#: page-woningselector.php:82
+#: page-woningselector.php:83
 msgid "Surface"
 msgstr ""
 
-#: page-woningselector.php:83
+#: page-woningselector.php:84
 msgid "Price"
 msgstr ""
 
