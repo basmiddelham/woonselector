@@ -1,40 +1,40 @@
-// .grid-item {
-//   width: 100%;
+.grid-item {
+  width: 100%;
 
-//   > * {
-//     float: left;
-//   }
-// }
+  > * {
+    float: left;
+  }
+}
 
-// .grid-item .name { width: 50%; }
-// .grid-item .building { width: 50%; }
-// .grid-item .category { width: 40%; }
-// .grid-item .type { width: 20%; }
-// .grid-item .surface { width: 20%; }
-// .grid-item .price { width: 20%; }
+.grid-item .name { width: 50%; }
+.grid-item .building { width: 50%; }
+.grid-item .category { width: 40%; }
+.grid-item .type { width: 20%; }
+.grid-item .surface { width: 20%; }
+.grid-item .price { width: 20%; }
 
-// @include media-breakpoint-up(md) {
-//     .grid-item .name { width: 30%; }
-//     .grid-item .category { width: 20%; }
-//     .grid-item .building { width: 20%; }
-//     .grid-item .type { width: 10%; }
-//     .grid-item .surface { width: 10%; }
-//     .grid-item .price { width: 10%; }
-// }
+@include media-breakpoint-up(md) {
+    .grid-item .name { width: 30%; }
+    .grid-item .category { width: 20%; }
+    .grid-item .building { width: 20%; }
+    .grid-item .type { width: 10%; }
+    .grid-item .surface { width: 10%; }
+    .grid-item .price { width: 10%; }
+}
 
-// .icon-sort {
-//     svg {
-//         transition: transform .3s;
-//         width: 10px;
-//         margin-left: 0.5rem;
-//     }
+.icon-sort {
+    svg {
+        transition: transform .3s;
+        width: 10px;
+        margin-left: 0.5rem;
+    }
 
-//     &.sort-down svg {
-//         transform: rotate(180deg);
-//     }
-// }
+    &.sort-down svg {
+        transform: rotate(180deg);
+    }
+}
 
-.grid {
+.grid.list {
   display: flex;
   flex-flow: row wrap;
 

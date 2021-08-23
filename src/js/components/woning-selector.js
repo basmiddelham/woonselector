@@ -57,8 +57,8 @@ var pricesArray = [];
 
 
 var $grid = $('.grid').isotope({
-  itemSelector: '.grid-item',
   layoutMode: 'vertical',
+  itemSelector: '.grid-item',
   getSortData: {
     name: '.name',
     building: '.building',
@@ -128,35 +128,6 @@ $('#viewswitch').on( 'click' , function() {
   var $grid = $('.grid').isotope({
     itemSelector: '.grid-item',
     layoutMode: 'masonry',
-    getSortData: {
-      name: '.name',
-      building: '.building',
-      category: '.category',
-      floor: '.floor',
-      type: '.type',
-      surface: '[data-surface] parseInt',
-      price: '[data-price] parseInt',
-      building: '[data-building]',
-    },
-    filter: function( i, itemElem ) {
-      var $number = $( itemElem ).find('.price');
-      var number = parseInt( $number.text(), 10 );
-      // Gather all prices in an pricesArray
-      if ( pricesArray.indexOf(number) === -1 ) {
-        pricesArray.push(number);
-      }
-      return number >= min && number <= max;
-    },
-    sortAscending: {
-      surface: false,
-      price: false,
-    },
-    hiddenStyle: {
-      opacity: 0,
-    },
-    visibleStyle: {
-      opacity: 1,
-    },
   });
   
 });
