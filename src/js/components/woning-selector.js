@@ -61,12 +61,13 @@ var $grid = $('.grid').isotope({
   layoutMode: 'vertical',
   getSortData: {
     name: '.name',
-    category: '.category',
     building: '.building',
+    category: '.category',
     floor: '.floor',
     type: '.type',
     surface: '[data-surface] parseInt',
     price: '[data-price] parseInt',
+    building: '[data-building]',
   },
   filter: function( i, itemElem ) {
     var $number = $( itemElem ).find('.price');
@@ -121,7 +122,44 @@ function updateOutput() {
 }
 updateOutput();
 
+$('#viewswitch').on( 'click' , function() {
+  $('.grid').isotope('destroy');
 
+  var $grid = $('.grid').isotope({
+    itemSelector: '.grid-item',
+    layoutMode: 'masonry',
+    getSortData: {
+      name: '.name',
+      building: '.building',
+      category: '.category',
+      floor: '.floor',
+      type: '.type',
+      surface: '[data-surface] parseInt',
+      price: '[data-price] parseInt',
+      building: '[data-building]',
+    },
+    filter: function( i, itemElem ) {
+      var $number = $( itemElem ).find('.price');
+      var number = parseInt( $number.text(), 10 );
+      // Gather all prices in an pricesArray
+      if ( pricesArray.indexOf(number) === -1 ) {
+        pricesArray.push(number);
+      }
+      return number >= min && number <= max;
+    },
+    sortAscending: {
+      surface: false,
+      price: false,
+    },
+    hiddenStyle: {
+      opacity: 0,
+    },
+    visibleStyle: {
+      opacity: 1,
+    },
+  });
+  
+});
 
 // Sort
 $('.sort-button-group').on( 'click', 'button', function() {
@@ -147,7 +185,6 @@ $('.sort-button-group').on( 'click', 'button', function() {
 var filters = {};
 
 $('.filters-select').on( 'change', function( event ) {
-  console.log('price chanhe');
   var $select = $( event.target );
   // get group key
   var filterGroup = $select.attr('value-group');
@@ -155,6 +192,7 @@ $('.filters-select').on( 'change', function( event ) {
   filters[ filterGroup ] = event.target.value;
   // combine filters
   var filterValue = concatValues( filters );
+  console.log(filterValue);
   // set filter for Isotope
   $grid.isotope({ filter: filterValue });
   updateFilterCount();
