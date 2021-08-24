@@ -1,63 +1,14 @@
 import $ from 'jquery';
 
-// Price Range
-// ------------------------------------>
-
-// initial values
-// var min = 0;
-// var max = 4000;
-// var pricesArray = [];
-
-// // init Isotope
-// var $grid = $('.grid').isotope({
-//   itemSelector: '.grid-item',
-//   // filter with function
-//   filter: function( i, itemElem ) {
-//     var $number = $( itemElem ).find('.price');
-//     var number = parseInt( $number.text(), 10 );
-//     // Gather all prices in an pricesArray
-//     if ( pricesArray.indexOf(number) === -1 ) {
-//       pricesArray.push(number);
-//     }
-//     return number >= min && number <= max;
-//   }
-// });
-
-// // Calculate highest and lowest numbers
-// max = Math.max.apply(Math, pricesArray);
-// min = Math.min.apply(Math, pricesArray);
-
-// // Initiate jQuery UI slider
-// var $range = $('.price-range').slider({
-//   range: true,
-//   min: min,
-//   max: max,
-//   values: [ min, max ],
-//   slide: function( event, ui ) {
-//     min = ui.values[0];
-//     max = ui.values[1];
-//     updateOutput();
-//     $grid.isotope();
-//   }
-// });
-
-// // Display ranges text
-// var $rangeOutput = $('.price-range-output');
-// function updateOutput() {
-//   $rangeOutput.text( min + ' - ' + max );
-// }
-// updateOutput();
-
-
-// init Isotope
 // initial values
 var min = 0;
 var max = 4000;
 var pricesArray = [];
 
-
+// Initialize Isotope
+// ------------------------------------>
 var $grid = $('.grid').isotope({
-  layoutMode: 'vertical',
+  layoutMode: 'masonry',
   itemSelector: '.grid-item',
   getSortData: {
     name: '.name',
@@ -90,8 +41,6 @@ var $grid = $('.grid').isotope({
   },
 });
 
-var iso = $grid.data('isotope');
-var $filterCount = $('.filter-count span');
 
 // Price Range
 // ------------------------------------>
@@ -115,7 +64,7 @@ var $range = $('.price-range').slider({
   }
 });
 
-// Display ranges text
+// Display range text
 var $rangeOutput = $('.price-range-output');
 function updateOutput() {
   $rangeOutput.text( min + ' - ' + max );
@@ -132,7 +81,8 @@ $('#viewswitch').on( 'click' , function() {
   
 });
 
-// Sort
+// Sorts
+// ------------------------------------>
 $('.sort-button-group').on( 'click', 'button', function() {
   // Get the element name to sort
   var sortValue = $(this).attr('data-sort-value');
@@ -152,7 +102,17 @@ $('.sort-button-group').on( 'click', 'button', function() {
   otherIcons.toggleClass('sort-down');
 });
 
+// change is-checked class on buttons
+$('.sort-button-group').each( function( i, buttonGroup ) {
+  var $buttonGroup = $( buttonGroup );
+  $buttonGroup.on( 'click', 'button', function() {
+    $buttonGroup.find('.active').removeClass('active');
+    $( this ).addClass('active');
+  });
+});
+
 // Filters
+// ------------------------------------>
 var filters = {};
 
 $('.filters-select').on( 'change', function( event ) {
@@ -169,6 +129,7 @@ $('.filters-select').on( 'change', function( event ) {
   updateFilterCount();
 });
 
+
 // flatten object by concatting values
 function concatValues( obj ) {
   var value = '';
@@ -178,19 +139,11 @@ function concatValues( obj ) {
   return value;
 }
 
-
+// Filter Counter
+// ------------------------------------>
+var $filterCount = $('.hs_filtercount span');
+var iso = $grid.data('isotope');
 function updateFilterCount() {
   $filterCount.text( iso.filteredItems.length );
 }
-
 updateFilterCount();
-
-
-// change is-checked class on buttons
-$('.sort-button-group').each( function( i, buttonGroup ) {
-  var $buttonGroup = $( buttonGroup );
-  $buttonGroup.on( 'click', 'button', function() {
-    $buttonGroup.find('.active').removeClass('active');
-    $( this ).addClass('active');
-  });
-});

@@ -1,27 +1,77 @@
-.grid-item {
-  width: 100%;
+.hs {
 
-  > * {
-    float: left;
+  &.hs_cards {
+    .grid {
+      @extend .list-unstyled;
+    }
+
+    .hs_heading {
+      display: none;
+    }
+
+    .hs_card {
+      margin-bottom: $grid-gutter-width * 2;
+
+      .hs_card_content {
+        @extend .list-unstyled;
+        border: 1px solid $gray-400;
+        border-radius: 3px;
+
+        > * {
+          padding-left: $grid-gutter-width;
+          padding-right: $grid-gutter-width;
+        }
+      }
+
+      .name {
+        background-color: $primary;
+
+        a {
+          color: white;
+          text-decoration: none;
+          font-weight: bold;
+        }
+      }
+
+      .hs_card_data,
+      .hs_card_value {
+        width: 50%;
+      }
+    }
+  }
+
+  &.hs_list {
+    .grid-item {
+      width: 100%;
+    
+      > * {
+        float: left;
+      }
+      .name { width: 50%; }
+      .building { width: 50%; }
+      .category { width: 40%; }
+      .type { width: 20%; }
+      .surface { width: 20%; }
+      .price { width: 20%; }
+
+      @include media-breakpoint-up(md) {
+        .name { width: 30%; }
+        .category { width: 20%; }
+        .building { width: 20%; }
+        .type { width: 10%; }
+        .surface { width: 10%; }
+        .price { width: 10%; }
+      }
+    }
   }
 }
 
-.grid-item .name { width: 50%; }
-.grid-item .building { width: 50%; }
-.grid-item .category { width: 40%; }
-.grid-item .type { width: 20%; }
-.grid-item .surface { width: 20%; }
-.grid-item .price { width: 20%; }
-
-@include media-breakpoint-up(md) {
-    .grid-item .name { width: 30%; }
-    .grid-item .category { width: 20%; }
-    .grid-item .building { width: 20%; }
-    .grid-item .type { width: 10%; }
-    .grid-item .surface { width: 10%; }
-    .grid-item .price { width: 10%; }
+.hs_filtercount {
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 2.5;
 }
-
+// Sort
 .icon-sort {
     svg {
         transition: transform .3s;
@@ -34,14 +84,3 @@
     }
 }
 
-.grid.list {
-  display: flex;
-  flex-flow: row wrap;
-
-  ul.grid-item {
-    width: 25%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-}

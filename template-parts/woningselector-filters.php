@@ -59,7 +59,7 @@
         </select>
     </div>
     <div class="col">
-        <label for="priceRange" class="form-label"><?php esc_html_e('Price range:', 'strt'); ?>
+        <label class="form-label"><?php esc_html_e('Price range:', 'strt'); ?>
             <span class="price-range-output"></span>
         </label>
         <div id="priceRange" class="price-range"></div>
